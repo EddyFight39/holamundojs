@@ -1,5 +1,17 @@
-FROM node:4.2
+# Usar una imagen base de Node.js más reciente
+FROM node:16
+
+# Copiar el contenido del proyecto al contenedor
 COPY . /src
-RUN cd /src && npm install
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /src
+
+# Instalar las dependencias
+RUN npm install
+
+# Exponer el puerto 4000
 EXPOSE 4000
-CMD ["node", "/src/server.js"]
+
+# Comando para ejecutar la aplicación
+CMD ["node", "server.js"]
